@@ -4,8 +4,10 @@ using System.Text;
 
 namespace AlgorithmShip
 {
-    public enum Type
+    public enum ContainerType
     {
-        cooled, normal, valuable
+        cooled =0,
+        normal=1, 
+        valuable =2
     }
 }
