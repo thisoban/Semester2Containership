@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AlgorithmShip
+namespace algorithm
 {
     public class Ship
     {
-        public List<Column> columns = new List<Column>();
+        private readonly List<Column> columns = new List<Column>();
         public int Horizon { get; set; }
         public int Vertical { get; set; }
         public IReadOnlyCollection<Column> Columns
@@ -77,30 +79,31 @@ namespace AlgorithmShip
                 return columns.Where(x => x.Horizontal > (Vertical / 2)).ToList();
             }
         }
-   
 
-    private  Side  Lightside()
-    {
-        
-        int LeftWeight = columns.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.ColumnWeight);
-        int RightWeight =  columns.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.ColumnWeight);
-
-        if (LeftWeight > RightWeight)
+        private Side Lightside()
         {
-            return Side.right;
-        }
-        else
-        {
-            return Side.left;
-        }
-    }
 
-    public enum Side
-    {
-        left,
-        right
-    }
+            int LeftWeight = columns.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.ColumnWeight);
+            int RightWeight = columns.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.ColumnWeight);
+
+            if (LeftWeight > RightWeight)
+            {
+                return Side.right;
+            }
+            else
+            {
+                return Side.left;
+            }
+        }
+
+        public enum Side
+        {
+            left,
+            right
+        }
     }
 }
-    
+  
+
+
 
