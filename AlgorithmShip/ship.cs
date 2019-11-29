@@ -6,7 +6,7 @@ namespace AlgorithmShip
 {
     public class Ship
     {
-        public List<Column> columns = new List<Column>();
+        private readonly List<Column> columns = new List<Column>();
         public int Horizon { get; set; }
         public int Vertical { get; set; }
         public IReadOnlyCollection<Column> Columns
@@ -17,6 +17,7 @@ namespace AlgorithmShip
         {
             Horizon = horizon;
             Vertical = vertical;
+            LoadColumns();
         }
 
         private void LoadColumns()
