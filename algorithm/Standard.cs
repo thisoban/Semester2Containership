@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace algorithm
 {
-    public class Standard : Container, IContainer
+    public class Standard : Container,IContainer
     {
-        public ContainerType Type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ContainerType Type { get ; set; }
 
         public Column SearchSpace(List<Column> columns)
         {

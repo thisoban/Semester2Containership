@@ -8,7 +8,7 @@ namespace algorithm
 {
     public class Valuable : Container, IContainer
     {
-        public ContainerType Type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ContainerType Type { get; set; }
 
         public Column SearchSpace(List<Column> columns)
         {

@@ -40,19 +40,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TypeofContainerComboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.WeightContainer = new System.Windows.Forms.NumericUpDown();
             this.BtnPlaceAll = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lbKolom = new System.Windows.Forms.ListBox();
-            this.cbHorizontaal = new System.Windows.Forms.ComboBox();
-            this.cbVerticaal = new System.Windows.Forms.ComboBox();
+            this.lbColumn = new System.Windows.Forms.ListBox();
+            this.cbHorizontal = new System.Windows.Forms.ComboBox();
+            this.cbVertical = new System.Windows.Forms.ComboBox();
             this.Horizontaal = new System.Windows.Forms.Label();
             this.Verticaal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeightContainer)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +119,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.TypeofContainerComboBox);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.WeightContainer);
             this.groupBox2.Location = new System.Drawing.Point(465, 31);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(580, 336);
@@ -144,6 +144,7 @@
             this.BtnCreateContainer.TabIndex = 4;
             this.BtnCreateContainer.Text = "Create Container";
             this.BtnCreateContainer.UseVisualStyleBackColor = true;
+            this.BtnCreateContainer.Click += new System.EventHandler(this.BtnCreateContainer_Click);
             // 
             // label4
             // 
@@ -166,32 +167,28 @@
             // TypeofContainerComboBox
             // 
             this.TypeofContainerComboBox.FormattingEnabled = true;
-            this.TypeofContainerComboBox.Items.AddRange(new object[] {
-            "valuable",
-            "normal",
-            "cooled"});
             this.TypeofContainerComboBox.Location = new System.Drawing.Point(165, 111);
             this.TypeofContainerComboBox.Name = "TypeofContainerComboBox";
             this.TypeofContainerComboBox.Size = new System.Drawing.Size(121, 28);
             this.TypeofContainerComboBox.TabIndex = 1;
             // 
-            // numericUpDown1
+            // WeightContainer
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(165, 54);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.WeightContainer.Location = new System.Drawing.Point(165, 54);
+            this.WeightContainer.Maximum = new decimal(new int[] {
             30000,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.WeightContainer.Minimum = new decimal(new int[] {
             4000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.WeightContainer.Name = "WeightContainer";
+            this.WeightContainer.Size = new System.Drawing.Size(120, 26);
+            this.WeightContainer.TabIndex = 0;
+            this.WeightContainer.Value = new decimal(new int[] {
             4000,
             0,
             0,
@@ -205,12 +202,13 @@
             this.BtnPlaceAll.TabIndex = 2;
             this.BtnPlaceAll.Text = "Place all containers";
             this.BtnPlaceAll.UseVisualStyleBackColor = true;
+            this.BtnPlaceAll.Click += new System.EventHandler(this.BtnPlaceAll_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.lbKolom);
-            this.groupBox3.Controls.Add(this.cbHorizontaal);
-            this.groupBox3.Controls.Add(this.cbVerticaal);
+            this.groupBox3.Controls.Add(this.lbColumn);
+            this.groupBox3.Controls.Add(this.cbHorizontal);
+            this.groupBox3.Controls.Add(this.cbVertical);
             this.groupBox3.Controls.Add(this.Horizontaal);
             this.groupBox3.Controls.Add(this.Verticaal);
             this.groupBox3.Location = new System.Drawing.Point(369, 384);
@@ -220,33 +218,33 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ship";
             // 
-            // lbKolom
+            // lbColumn
             // 
-            this.lbKolom.FormattingEnabled = true;
-            this.lbKolom.ItemHeight = 20;
-            this.lbKolom.Location = new System.Drawing.Point(322, 18);
-            this.lbKolom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lbKolom.Name = "lbKolom";
-            this.lbKolom.Size = new System.Drawing.Size(637, 384);
-            this.lbKolom.TabIndex = 7;
+            this.lbColumn.FormattingEnabled = true;
+            this.lbColumn.ItemHeight = 20;
+            this.lbColumn.Location = new System.Drawing.Point(322, 18);
+            this.lbColumn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbColumn.Name = "lbColumn";
+            this.lbColumn.Size = new System.Drawing.Size(637, 384);
+            this.lbColumn.TabIndex = 7;
             // 
-            // cbHorizontaal
+            // cbHorizontal
             // 
-            this.cbHorizontaal.FormattingEnabled = true;
-            this.cbHorizontaal.Location = new System.Drawing.Point(134, 106);
-            this.cbHorizontaal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbHorizontaal.Name = "cbHorizontaal";
-            this.cbHorizontaal.Size = new System.Drawing.Size(180, 28);
-            this.cbHorizontaal.TabIndex = 6;
+            this.cbHorizontal.FormattingEnabled = true;
+            this.cbHorizontal.Location = new System.Drawing.Point(117, 98);
+            this.cbHorizontal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbHorizontal.Name = "cbHorizontal";
+            this.cbHorizontal.Size = new System.Drawing.Size(180, 28);
+            this.cbHorizontal.TabIndex = 6;
             // 
-            // cbVerticaal
+            // cbVertical
             // 
-            this.cbVerticaal.FormattingEnabled = true;
-            this.cbVerticaal.Location = new System.Drawing.Point(117, 48);
-            this.cbVerticaal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbVerticaal.Name = "cbVerticaal";
-            this.cbVerticaal.Size = new System.Drawing.Size(180, 28);
-            this.cbVerticaal.TabIndex = 5;
+            this.cbVertical.FormattingEnabled = true;
+            this.cbVertical.Location = new System.Drawing.Point(117, 48);
+            this.cbVertical.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbVertical.Name = "cbVertical";
+            this.cbVertical.Size = new System.Drawing.Size(180, 28);
+            this.cbVertical.TabIndex = 5;
             // 
             // Horizontaal
             // 
@@ -285,7 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeightContainer)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -302,16 +300,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox TypeofContainerComboBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown WeightContainer;
         private System.Windows.Forms.ListBox ContainerList;
         private System.Windows.Forms.Button BtnCreateContainer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnPlaceAll;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox lbKolom;
-        private System.Windows.Forms.ComboBox cbHorizontaal;
-        private System.Windows.Forms.ComboBox cbVerticaal;
+        private System.Windows.Forms.ListBox lbColumn;
+        private System.Windows.Forms.ComboBox cbHorizontal;
+        private System.Windows.Forms.ComboBox cbVertical;
         private System.Windows.Forms.Label Horizontaal;
         private System.Windows.Forms.Label Verticaal;
     }
