@@ -19,6 +19,7 @@ namespace algorithm
         {
             Horizon = horizon;
             Vertical = vertical;
+            LoadColumns();
         }
 
         private void LoadColumns()
