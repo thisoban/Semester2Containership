@@ -8,27 +8,27 @@ namespace algorithm
 {
     public class Ship
     {
-        private readonly List<Column> columns = new List<Column>();
+        private readonly List<Stack> stack = new List<Stack>();
         public int Horizon { get; set; }
         public int Vertical { get; set; }
-        public IReadOnlyCollection<Column> Columns
+        public IReadOnlyCollection<Stack> Columns
         {
-            get => columns;
+            get => stack;
         }
         public Ship(int horizon, int vertical)
         {
             Horizon = horizon;
             Vertical = vertical;
-            LoadColumns();
+            InitStacks();
         }
 
-        private void LoadColumns()
+        private void InitStacks()
         {
             for (int b = 0; b < Vertical; b++)
             {
                 for (int l = 0; l < Horizon; l++)
                 {
-                    columns.Add(new Column() { Horizontal = (b + 1), Vertical = (l + 1), ColumnWeight = 0 });
+                    stack.Add(new Stack() { Horizontal = (b + 1), Vertical = (l + 1), StackWeight = 0 });
                 }
             }
         }
@@ -44,8 +44,8 @@ namespace algorithm
         {
             try
             {
-                Column column = container.SearchSpace(ColumnLightestSide());
-                column.PlaceContinaer(container);
+                Stack stack = container.SearchSpace(ColumnLightestSide());
+                stack.PlaceContinaer(container);
             }
             catch (Exception)
             {
@@ -55,8 +55,8 @@ namespace algorithm
 
         public bool Balance()
         {
-            bool ShipBalanced = (columns.Sum(x => x.ColumnWeight) >= (columns.Count * 150000) / 2);
-            bool ColumnBalanced = ((ColumnLightestSide().Sum(x => x.ColumnWeight) * 100) / columns.Sum(x => x.ColumnWeight) >= 40);
+            bool ShipBalanced = (stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2);
+            bool ColumnBalanced = ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40);
 
             if (!ColumnBalanced || !ShipBalanced)
             {
@@ -68,39 +68,39 @@ namespace algorithm
             }
         }
 
-        private List<Column> ColumnLightestSide()
+        private List<Stack> ColumnLightestSide()
         {
-            if (Lightside() == Side.left)
+            if (Lightside() == Side.Left)
             {
-                return columns.Where(x => x.Horizontal <= (Vertical / 2)).ToList();
+                return stack.Where(x => x.Horizontal <= (Vertical / 2)).ToList();
 
             }
             else
             {
-                return columns.Where(x => x.Horizontal > (Vertical / 2)).ToList();
+                return stack.Where(x => x.Horizontal > (Vertical / 2)).ToList();
             }
         }
 
         private Side Lightside()
         {
 
-            int LeftWeight = columns.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.ColumnWeight);
-            int RightWeight = columns.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.ColumnWeight);
+            int LeftWeight = stack.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.StackWeight);
+            int RightWeight = stack.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.StackWeight);
 
             if (LeftWeight > RightWeight)
             {
-                return Side.right;
+                return Side.Right;
             }
             else
             {
-                return Side.left;
+                return Side.Left;
             }
         }
 
         public enum Side
         {
-            left,
-            right
+            Left,
+            Right
         }
     }
 }

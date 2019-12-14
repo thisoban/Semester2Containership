@@ -61,17 +61,17 @@ namespace algorithm
 
         private void BtnCreateContainer_Click(object sender, EventArgs e)
         {
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.cooled)
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Cooled)
             {
                 _containers.Add(new Cooled() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
             }
 
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.normal)
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Normal)
             {
                 _containers.Add(new Standard() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
             }
 
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.valuable)
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Valuable)
             {
                 _containers.Add(new Valuable() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
             }
@@ -87,7 +87,7 @@ namespace algorithm
             if (cbHorizontal.SelectedText != null && cbVertical.SelectedText != null)
             {
                 List<IContainer> RowContainers = new List<IContainer>();
-                foreach (Column column in ship.Columns.Where(x => x.Vertical == (cbVertical.SelectedIndex + 1) && x.Horizontal == (cbHorizontal.SelectedIndex + 1)))
+                foreach (Stack column in ship.Columns.Where(x => x.Vertical == (cbVertical.SelectedIndex + 1) && x.Horizontal == (cbHorizontal.SelectedIndex + 1)))
                 {
                     foreach (Container container in column.Containers)
                     {

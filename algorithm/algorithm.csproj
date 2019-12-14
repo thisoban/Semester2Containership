@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Column.cs" />
+    <Compile Include="Stack.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="ContainerType.cs" />
     <Compile Include="Cooled.cs" />

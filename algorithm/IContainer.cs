@@ -10,6 +10,6 @@ namespace algorithm
     {
         ContainerType Type { get; set; }
         int ContainerWeight { get; set; }
-        Column SearchSpace(List<Column> columns);
+        Stack SearchSpace(List<Stack> columns);
     }
 }

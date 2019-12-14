@@ -10,14 +10,14 @@ namespace algorithm
     {
         public ContainerType Type { get ; set; }
 
-        public Column SearchSpace(List<Column> columns)
+        public Stack SearchSpace(List<Stack> columns)
         {
-            if (columns.OrderBy(x => x.ColumnWeight).Where(x => this.ContainerFitsInColumn(x)).ToList().Count() == 0)
+            if (columns.OrderBy(x => x.StackWeight).Where(x => this.ContainerFitsInColumn(x)).ToList().Count() == 0)
             {
                 return null;
             }
 
-            return columns.OrderBy(x => x.ColumnWeight).Where(x => this.ContainerFitsInColumn(x)).ToList().First();
+            return columns.OrderBy(x => x.StackWeight).Where(x => this.ContainerFitsInColumn(x)).ToList().First();
         }
     }
 }

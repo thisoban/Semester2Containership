@@ -15,11 +15,11 @@ namespace algorithm
         {
             return "Type: " + ContainerType + " Weight: " + ContainerWeight;
         }
-        public bool ContainerFitsInColumn(Column column)
+        public bool ContainerFitsInColumn(Stack stack)
         {
-            if (column.Containers.Count != 0)
+            if (stack.Containers.Count != 0)
             {
-                int WeightColumn = (column.Containers.Sum(x => x.ContainerWeight) - (column.Containers.First().ContainerWeight));
+                int WeightColumn = (stack.Containers.Sum(x => x.ContainerWeight) - (stack.Containers.First().ContainerWeight));
                 return (WeightColumn + ContainerWeight <= 120000);
             }
             return true;

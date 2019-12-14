@@ -8,8 +8,8 @@ namespace algorithm
 {
     public enum ContainerType
     {
-        cooled = 0,
-        normal = 1,
-        valuable = 2
+        Cooled = 0,
+        Normal = 1,
+        Valuable = 2
     }
 }
