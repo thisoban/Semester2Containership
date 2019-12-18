@@ -11,10 +11,10 @@ namespace algorithm
         private readonly List<Stack> stack = new List<Stack>();
         public int Horizon { get; set; }
         public int Vertical { get; set; }
-        public IReadOnlyCollection<Stack> Columns
-        {
-            get => stack;
-        }
+        public bool IsBalanced => Balance();
+
+        public IReadOnlyCollection<Stack> Columns => stack;
+
         public Ship(int horizon, int vertical)
         {
             Horizon = horizon;
@@ -55,17 +55,18 @@ namespace algorithm
 
         public bool Balance()
         {
-            bool ShipBalanced = (stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2);
-            bool ColumnBalanced = ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40);
-
-            if (!ColumnBalanced || !ShipBalanced)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            //bool ShipBalanced = (stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2);
+            //bool ColumnBalanced = ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40);
+            return (!((stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2)) ||
+                    ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40));
+            //if (!ColumnBalanced || !ShipBalanced)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    return true;
+            //}
         }
 
         private List<Stack> ColumnLightestSide()
@@ -104,7 +105,7 @@ namespace algorithm
         }
     }
 }
-  
+
 
 
 

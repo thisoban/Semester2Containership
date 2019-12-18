@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "algorithm", "algorithm\algorithm.csproj", "{978CD55D-EBF7-4A0A-95D7-0283DB432264}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerShip", "algorithm\ContainerShip.csproj", "{978CD55D-EBF7-4A0A-95D7-0283DB432264}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ship", "ship\ship.csproj", "{4D933B2B-3ADF-408F-9169-6C0DF84DE706}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnittestContainerShip", "ship\UnittestContainerShip.csproj", "{4D933B2B-3ADF-408F-9169-6C0DF84DE706}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

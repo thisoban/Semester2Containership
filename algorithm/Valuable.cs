@@ -12,9 +12,8 @@ namespace algorithm
 
         public Stack SearchSpace(List<Stack> columns)
         {
-            if (columns.OrderBy(x => x.StackWeight).Where(x =>
-                       ContainerFitsInColumn(x) && !x.Containers.Any(y => y.Type == ContainerType.Valuable))
-                   .Count() == 0)
+            if (!columns.OrderBy(x => x.StackWeight).Where(x =>
+                ContainerFitsInColumn(x) && x.Containers.All(y => y.Type != ContainerType.Valuable)).Any())
             {
                 return null;
             }
