@@ -24,13 +24,9 @@ namespace algorithm
 
         private void InitStacks()
         {
-            for (int b = 0; b < Vertical; b++)
-            {
-                for (int l = 0; l < Horizon; l++)
-                {
-                    stack.Add(new Stack() { Horizontal = (b + 1), Vertical = (l + 1), StackWeight = 0 });
-                }
-            }
+            for (var b = 0; b < Vertical; b++)
+            for (var l = 0; l < Horizon; l++)
+                stack.Add(new Stack {Horizontal = b + 1, Vertical = l + 1, StackWeight = 0});
         }
         public void PlaceAllContainers(List<IContainer> containers)
         {
@@ -55,23 +51,13 @@ namespace algorithm
 
         public bool Balance()
         {
-            //bool ShipBalanced = (stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2);
-            //bool ColumnBalanced = ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40);
             return (!((stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2)) ||
                     ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40));
-            //if (!ColumnBalanced || !ShipBalanced)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
         }
 
         private List<Stack> ColumnLightestSide()
         {
-            if (Lightside() == Side.Left)
+            if (LightSide() == Side.Left)
             {
                 return stack.Where(x => x.Horizontal <= (Vertical / 2)).ToList();
 
@@ -82,20 +68,17 @@ namespace algorithm
             }
         }
 
-        private Side Lightside()
+        private Side LightSide()
         {
 
-            int LeftWeight = stack.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.StackWeight);
-            int RightWeight = stack.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.StackWeight);
+            var LeftWeight = stack.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.StackWeight);
+            var RightWeight = stack.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.StackWeight);
 
-            if (LeftWeight > RightWeight)
-            {
-                return Side.Right;
-            }
-            else
-            {
-                return Side.Left;
-            }
+            if (LeftWeight > RightWeight) return Side.Right;
+
+
+            return Side.Left;
+            
         }
 
         public enum Side

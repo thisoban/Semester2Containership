@@ -236,6 +236,7 @@
             this.cbHorizontal.Name = "cbHorizontal";
             this.cbHorizontal.Size = new System.Drawing.Size(180, 28);
             this.cbHorizontal.TabIndex = 6;
+            this.cbHorizontal.SelectedIndexChanged += new System.EventHandler(this.cbHorizontal_SelectedIndexChanged_1);
             // 
             // cbVertical
             // 

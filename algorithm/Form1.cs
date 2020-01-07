@@ -29,12 +29,11 @@ namespace algorithm
         private void ShipMakerBtn_Click(object sender, EventArgs e)
         {
             ShipMakerBtn.Enabled = false;
-          
             BtnPlaceAll.Enabled = true;
             BtnCreateContainer.Enabled = true;
            
             ship = new Ship((int)HorizontalUpDown.Value, (int)VerticalNumericUpDown.Value);
-            
+            FillCombobox();
             
         }
         public void FillCombobox()
@@ -53,36 +52,14 @@ namespace algorithm
         private void BtnPlaceAll_Click(object sender, EventArgs e)
         {
             ship.PlaceAllContainers(_containers);
+            Console.WriteLine("testing");
             if (!ship.Balance())
             {
                 MessageBox.Show("ship is not in balance");
             }
         }
 
-        private void BtnCreateContainer_Click(object sender, EventArgs e)
-        {
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Cooled)
-            {
-                _containers.Add(new Cooled() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
-            }
-
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Normal)
-            {
-                _containers.Add(new Standard() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
-            }
-
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Valuable)
-            {
-                _containers.Add(new Valuable() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
-            }
-
-            ContainerList.Items.Clear();
-            foreach (IContainer container in _containers)
-            {
-                ContainerList.Items.Add(container.ToString());
-            }
-        }
-        private void CbHorizontal_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHorizontal_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cbHorizontal.SelectedText != null && cbVertical.SelectedText != null)
             {
@@ -95,6 +72,29 @@ namespace algorithm
                         lbColumn.Items.Add(container);
                     }
                 }
+            }
+        }
+        private void BtnCreateContainer_Click(object sender, EventArgs e)
+        {
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Cooled)
+            {
+                _containers.Add(new Cooled() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
+            }
+
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Normal)
+            {
+                _containers.Add(new Standard() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType.Normal )});
+            }
+
+            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Valuable)
+            {
+                _containers.Add(new Valuable() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
+            }
+
+            ContainerList.Items.Clear();
+            foreach (IContainer container in _containers)
+            {
+                ContainerList.Items.Add(container.ToString());
             }
         }
     }
