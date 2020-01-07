@@ -13,7 +13,7 @@ namespace algorithm
     public partial class Form1 : Form
     {
         private Ship ship;
-        private readonly List<IContainer> _containers = new List<IContainer>();
+        private  List<IContainer> _containers = new List<IContainer>();
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace algorithm
             BtnCreateContainer.Enabled = true;
            
             ship = new Ship((int)HorizontalUpDown.Value, (int)VerticalNumericUpDown.Value);
-            
+            FillCombobox();
             
         }
         public void FillCombobox()
@@ -82,11 +82,12 @@ namespace algorithm
                 ContainerList.Items.Add(container.ToString());
             }
         }
-        private void CbHorizontal_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cbHorizontal_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cbHorizontal.SelectedText != null && cbVertical.SelectedText != null)
             {
-                List<IContainer> RowContainers = new List<IContainer>();
+                List<IContainer> rowContainers = new List<IContainer>();
                 foreach (Stack column in ship.Columns.Where(x => x.Vertical == (cbVertical.SelectedIndex + 1) && x.Horizontal == (cbHorizontal.SelectedIndex + 1)))
                 {
                     foreach (Container container in column.Containers)

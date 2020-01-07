@@ -225,7 +225,7 @@
             this.lbColumn.Location = new System.Drawing.Point(322, 18);
             this.lbColumn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lbColumn.Name = "lbColumn";
-            this.lbColumn.Size = new System.Drawing.Size(637, 384);
+            this.lbColumn.Size = new System.Drawing.Size(637, 304);
             this.lbColumn.TabIndex = 7;
             // 
             // cbHorizontal
@@ -236,6 +236,7 @@
             this.cbHorizontal.Name = "cbHorizontal";
             this.cbHorizontal.Size = new System.Drawing.Size(180, 28);
             this.cbHorizontal.TabIndex = 6;
+            this.cbHorizontal.SelectedIndexChanged += new System.EventHandler(this.cbHorizontal_SelectedIndexChanged_1);
             // 
             // cbVertical
             // 
