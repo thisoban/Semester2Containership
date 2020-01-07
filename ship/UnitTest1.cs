@@ -80,5 +80,33 @@ namespace ship
             Ship ship = new Ship(3,3);
             Assert.IsTrue( ship.IsBalanced);
         }
+
+        [TestMethod]
+        public void TestShipBalance4Containers()
+        {
+            Ship ship = new Ship(6, 6);
+            List<IContainer> containers = new List<IContainer>()
+            {
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+              
+            };
+            ship.PlaceAllContainers(containers);
+            Assert.IsTrue(ship.IsBalanced);
+        }
+
+        [TestMethod]
+        public void TestListContainers()
+        {
+            Ship ship = new Ship(6,6);
+            List<IContainer> containers = new List<IContainer>()
+            {
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 10000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal}
+            };
+            Assert.AreEqual(5, containers.Count());
+        }
     }
 }

@@ -9,11 +9,10 @@ namespace algorithm
     public class Container
     {
         public int ContainerWeight { get; set; }
-        public ContainerType ContainerType { get; set; }
-
+        public ContainerType type { get; set; }
         public override string ToString()
         {
-            return "Type: " + ContainerType + " Weight: " + ContainerWeight;
+            return "Type: " + type + " Weight: " + ContainerWeight;
         }
         public bool ContainerFitsInColumn(Stack stack)
         {
