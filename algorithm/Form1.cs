@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace algorithm
+namespace ContainerShip
 {
     public partial class Form1 : Form
     {
@@ -20,9 +20,9 @@ namespace algorithm
             ShipMakerBtn.Enabled = true;
             BtnPlaceAll.Enabled = false;
             BtnCreateContainer.Enabled = false;
-            foreach (ContainerType type in Enum.GetValues(typeof(ContainerType)))
+            foreach (ContainerType Type in Enum.GetValues(typeof(ContainerType)))
             {
-                TypeofContainerComboBox.Items.Add(type);
+                TypeofContainerComboBox.Items.Add(Type);
             }
         }
 
@@ -76,19 +76,19 @@ namespace algorithm
         }
         private void BtnCreateContainer_Click(object sender, EventArgs e)
         {
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Cooled)
+            if ((ContainerType)TypeofContainerComboBox.SelectedItem == ContainerType.Cooled)
             {
-                _containers.Add(new Cooled() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
+                _containers.Add(new Cooled { ContainerWeight = (int)WeightContainer.Value, Type = ContainerType.Cooled});
             }
 
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Normal)
+            if ((ContainerType)TypeofContainerComboBox.SelectedItem == ContainerType.Normal)
             {
-                _containers.Add(new Standard() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType.Normal )});
+                _containers.Add(new Standard { ContainerWeight = (int)WeightContainer.Value, Type = ContainerType.Normal });
             }
 
-            if ((ContainerType)TypeofContainerComboBox.SelectedIndex == ContainerType.Valuable)
+            if ((ContainerType)TypeofContainerComboBox.SelectedItem == ContainerType.Valuable)
             {
-                _containers.Add(new Valuable() { ContainerWeight = (int)WeightContainer.Value, Type = (ContainerType)TypeofContainerComboBox.SelectedIndex });
+                _containers.Add(new Valuable { ContainerWeight = (int)WeightContainer.Value, Type = ContainerType.Valuable });
             }
 
             ContainerList.Items.Clear();

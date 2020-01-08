@@ -1,4 +1,4 @@
-﻿namespace algorithm
+﻿namespace ContainerShip
 {
     partial class Form1
     {
@@ -104,6 +104,11 @@
             this.VerticalNumericUpDown.Name = "VerticalNumericUpDown";
             this.VerticalNumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.VerticalNumericUpDown.TabIndex = 1;
+            this.VerticalNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // HorizontalUpDown
             // 
@@ -111,6 +116,11 @@
             this.HorizontalUpDown.Name = "HorizontalUpDown";
             this.HorizontalUpDown.Size = new System.Drawing.Size(120, 26);
             this.HorizontalUpDown.TabIndex = 0;
+            this.HorizontalUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // groupBox2
             // 

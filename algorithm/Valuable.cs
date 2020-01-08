@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace algorithm
+
+namespace ContainerShip
 {
     public class Valuable : Container, IContainer
     {
-        public ContainerType Type { get; set; }
 
         public Stack SearchSpace(List<Stack> columns)
         {

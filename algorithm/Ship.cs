@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace algorithm
+namespace ContainerShip
 {
     public class Ship
     {
@@ -12,7 +12,6 @@ namespace algorithm
         public int Horizon { get; set; }
         public int Vertical { get; set; }
         public bool IsBalanced => Balance();
-
         public IReadOnlyCollection<Stack> Columns => stack;
 
         public Ship(int horizon, int vertical)
@@ -51,8 +50,17 @@ namespace algorithm
 
         public bool Balance()
         {
-            return (!((stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2)) ||
-                    ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40));
+            bool ShipBalance = (stack.Sum(x => x.StackWeight) >= (stack.Count * 150000) / 2);
+            bool StackBalanced = ((ColumnLightestSide().Sum(x => x.StackWeight) * 100) / stack.Sum(x => x.StackWeight) >= 40);
+
+            if (!StackBalanced || !ShipBalance)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private List<Stack> ColumnLightestSide()
@@ -60,7 +68,6 @@ namespace algorithm
             if (LightSide() == Side.Left)
             {
                 return stack.Where(x => x.Horizontal <= (Vertical / 2)).ToList();
-
             }
             else
             {
@@ -70,18 +77,16 @@ namespace algorithm
 
         private Side LightSide()
         {
-
             var LeftWeight = stack.Where(x => x.Horizontal <= (Vertical / 2)).Sum(x => x.StackWeight);
             var RightWeight = stack.Where(x => x.Horizontal > (Vertical / 2)).Sum(x => x.StackWeight);
 
             if (LeftWeight > RightWeight) return Side.Right;
 
-
             return Side.Left;
             
         }
 
-        public enum Side
+        private enum Side
         {
             Left,
             Right

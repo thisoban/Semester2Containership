@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using algorithm;
+using ContainerShip;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ship
@@ -34,6 +33,18 @@ namespace ship
             {
                 containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
             }
+            
+            ship.PlaceAllContainers(containers);
+            List<IContainer> containersOnDeck = new List<IContainer>();
+            foreach (Stack stack in ship.Columns)
+            {
+                foreach (IContainer container in stack.Containers)
+                {
+                    containersOnDeck.Add(container);
+                }
+            }
+
+            Assert.IsTrue(containers.All(containersOnDeck.Contains) && containers.Count == containersOnDeck.Count && ship.Balance());
         }
 
         [TestMethod]
@@ -63,50 +74,74 @@ namespace ship
                 containers.Add(new Standard(){ContainerWeight = 30000, Type = ContainerType.Normal});
             }
             ship.PlaceAllContainers(containers);
-            List<IContainer> ContainersOnDeck = new List<IContainer>();
+            List<IContainer> containersOnDeck = new List<IContainer>();
             foreach (Stack stack in ship.Columns)
             {
                 foreach (IContainer container in stack.Containers)
                 {
-                    ContainersOnDeck.Add(container);
+                    containersOnDeck.Add(container);
                 }
             }
-            Assert.IsTrue(containers.All(ContainersOnDeck.Contains) && containers.Count == ContainersOnDeck.Count && ship.Balance());
+            Assert.IsTrue(containers.All(containersOnDeck.Contains) && containers.Count == containersOnDeck.Count && ship.Balance());
         }
 
         [TestMethod]
-        public void TestEmptyShipBalance()
+        public void TestBalanceWithOneContainer()
         {
             Ship ship = new Ship(3,3);
-            Assert.IsTrue( ship.IsBalanced);
+            List<IContainer> containers = new List<IContainer>
+            {
+                new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal }
+            };
+            ship.PlaceAllContainers(containers);
+            Assert.IsFalse( ship.IsBalanced);
         }
 
         [TestMethod]
-        public void TestShipBalance4Containers()
+        public void TestShipBalanceOneContainer()
         {
             Ship ship = new Ship(6, 6);
             List<IContainer> containers = new List<IContainer>()
             {
                 new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
+                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal}
               
             };
+           
             ship.PlaceAllContainers(containers);
-            Assert.IsTrue(ship.IsBalanced);
+            Assert.IsFalse(ship.IsBalanced);
         }
 
         [TestMethod]
         public void TestListContainers()
         {
-            Ship ship = new Ship(6,6);
-            List<IContainer> containers = new List<IContainer>()
+            Ship ship = new Ship(3,3);
+            List<IContainer> containers = new List<IContainer>();
+
+            for (int i = 0; i < 30; i++)
             {
-                new Standard() {ContainerWeight = 30000, Type = ContainerType.Normal},
-                new Standard() {ContainerWeight = 10000, Type = ContainerType.Normal},
-                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal},
-                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal},
-                new Standard() {ContainerWeight = 4000, Type = ContainerType.Normal}
-            };
-            Assert.AreEqual(5, containers.Count());
+                containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            }
+            ship.PlaceAllContainers(containers);
+            Assert.IsTrue(ship.IsBalanced);
+        }
+
+        [TestMethod]
+        public void TestShipBalance()
+        {
+            Ship ship = new Ship(2, 2);
+            List<IContainer> containers = new List<IContainer>();
+
+            for (int i = 0; i < 30; i++)
+            {
+                containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            }
+            ship.PlaceAllContainers(containers);
+            Assert.IsTrue(ship.IsBalanced);
         }
     }
 }
