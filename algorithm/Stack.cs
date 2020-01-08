@@ -5,7 +5,7 @@ namespace ContainerShip
     public class Stack
     {
         private readonly List<IContainer> _containers = new List<IContainer>();
-        public IReadOnlyCollection<IContainer> Containers { get => _containers; }
+        public IReadOnlyCollection<IContainer> Containers => _containers;
 
         public int Horizontal { get; set; }
         public int Vertical { get; set; }
