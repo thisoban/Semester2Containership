@@ -9,7 +9,7 @@ namespace ship
     public class UnitTest1
     {
         [TestMethod]
-        public void TestSmallShip()
+        public void TestSmallShip_FIllingContainers_Balanced()
         {
             Ship ship = new Ship(2,2);
 
@@ -48,7 +48,7 @@ namespace ship
         }
 
         [TestMethod]
-        public void  BigShip()
+        public void  TestBigShip_FillContainers_Balanced()
         {
             Ship ship = new Ship(4, 6);
             List<IContainer> containers = new List<IContainer>()
@@ -86,7 +86,7 @@ namespace ship
         }
 
         [TestMethod]
-        public void TestBalanceWithOneContainer()
+        public void TestBalanceWithOneContainer_UnBalanced()
         {
             Ship ship = new Ship(3,3);
             List<IContainer> containers = new List<IContainer>
@@ -98,7 +98,7 @@ namespace ship
         }
 
         [TestMethod]
-        public void TestShipBalanceOneContainer()
+        public void TestShipBalanceSixContainer_Unbalanced()
         {
             Ship ship = new Ship(6, 6);
             List<IContainer> containers = new List<IContainer>()
@@ -117,7 +117,7 @@ namespace ship
         }
 
         [TestMethod]
-        public void TestListContainers()
+        public void TestThirthyContainers_Balanced()
         {
             Ship ship = new Ship(3,3);
             List<IContainer> containers = new List<IContainer>();
@@ -131,14 +131,14 @@ namespace ship
         }
 
         [TestMethod]
-        public void TestShipBalance()
+        public void TestSmallShipBalance()
         {
             Ship ship = new Ship(2, 2);
             List<IContainer> containers = new List<IContainer>();
 
             for (int i = 0; i < 30; i++)
             {
-                containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+                containers.Add(new Cooled() { ContainerWeight = 30000, Type = ContainerType.Cooled });
             }
             ship.PlaceAllContainers(containers);
             Assert.IsTrue(ship.IsBalanced);

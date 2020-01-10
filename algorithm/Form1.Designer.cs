@@ -68,7 +68,7 @@
             this.groupBox1.Size = new System.Drawing.Size(250, 200);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ship";
+            this.groupBox1.Text = "_ship";
             // 
             // ShipMakerBtn
             // 
@@ -76,7 +76,7 @@
             this.ShipMakerBtn.Name = "ShipMakerBtn";
             this.ShipMakerBtn.Size = new System.Drawing.Size(118, 28);
             this.ShipMakerBtn.TabIndex = 4;
-            this.ShipMakerBtn.Text = "make a ship";
+            this.ShipMakerBtn.Text = "make a _ship";
             this.ShipMakerBtn.UseVisualStyleBackColor = true;
             this.ShipMakerBtn.Click += new System.EventHandler(this.ShipMakerBtn_Click);
             // 
@@ -226,7 +226,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1051, 358);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "ship";
+            this.groupBox3.Text = "_ship";
             // 
             // lbColumn
             // 
