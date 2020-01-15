@@ -10,6 +10,7 @@ namespace ContainerShip
             if (columns.OrderBy(x => x.StackWeight).Where(x => ContainerFitsInColumn(x)).ToList().Count() ==
                 0) return null;
 
+
             return columns.OrderBy(x => x.StackWeight).Where(x => ContainerFitsInColumn(x)).ToList().First();
         }
     }

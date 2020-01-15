@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ship
 {
     [TestClass]
-    public class UnitTest1
+    public class TestShip
     {
         [TestMethod]
         public void TestSmallShip_FIllingContainers_Balanced()
@@ -113,7 +113,7 @@ namespace ship
             };
            
             ship.PlaceAllContainers(containers);
-            Assert.IsFalse(ship.IsBalanced);
+            Assert.IsFalse(ship.Balance());
         }
 
         [TestMethod]
@@ -141,7 +141,56 @@ namespace ship
                 containers.Add(new Cooled() { ContainerWeight = 30000, Type = ContainerType.Cooled });
             }
             ship.PlaceAllContainers(containers);
-            Assert.IsTrue(ship.IsBalanced);
+            Assert.IsTrue(ship.Balance());
+        }
+
+        [TestMethod]
+        public void TestStackweight()
+        {
+            List<IContainer> containers = new List<IContainer>();
+            containers.Add(new Standard(){ContainerWeight = 30000, Type = ContainerType.Normal});
+            Ship ship = new Ship(2,2);
+            ship.PlaceAllContainers(containers);
+            Assert.AreEqual(30000, ship.ToTalWeight);
+
+              
+        }
+        [TestMethod]
+        public void TestStackweightMax()
+        {
+            List<IContainer> containers = new List<IContainer>();
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            Ship ship = new Ship(2, 2);
+            ship.PlaceAllContainers(containers);
+            Assert.AreEqual(150000, ship.ToTalWeight);
+
+        }
+        [TestMethod]
+        public void TestStackinvalid()
+        {
+            List<IContainer> containers = new List<IContainer>();
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            Ship ship = new Ship(2, 2);
+            ship.PlaceAllContainers(containers);
+            Assert.AreNotEqual(160000, ship.ToTalWeight);
+        }
+
+        [TestMethod]
+        public void TestBalancing()
+        {
+            Ship ship = new Ship(2,2);
+            List<IContainer> containers = new List<IContainer>();
+            containers.Add(new Standard() { ContainerWeight = 30000, Type = ContainerType.Normal });
+            ship.PlaceAllContainers(containers);
+            Assert.IsFalse(ship.Balance()); 
         }
     }
 }

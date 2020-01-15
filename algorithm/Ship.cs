@@ -17,6 +17,7 @@ namespace ContainerShip
 
         public int Horizon { get; set; }
         public int Vertical { get; set; }
+        public int ToTalWeight => TotalWeight();
         public bool IsBalanced => Balance();
         public IReadOnlyCollection<Stack> Columns => stack;
 
@@ -78,6 +79,17 @@ namespace ContainerShip
         {
             Left,
             Right
+        }
+
+        private int TotalWeight()
+        {
+            int weight = 0;
+           
+            foreach (var x in Columns)
+            {
+                weight += x.StackWeight;
+            }
+            return weight;
         }
     }
 }
