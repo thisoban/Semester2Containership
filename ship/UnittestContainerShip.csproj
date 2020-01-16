@@ -51,6 +51,9 @@
   <ItemGroup>
     <Compile Include="TestShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCooled.cs" />
+    <Compile Include="TestValuable.cs" />
+    <Compile Include="TestNormal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
